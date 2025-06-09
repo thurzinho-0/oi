@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário</title>
+  <!-- 
+  Projeto: Formulário de Cadastro - Little Bunny's
+  Descrição: Formulário de criação de conta para e-commerce fictício,
+  desenvolvido como parte do Projeto Integrador da Fatec - Curso de Desenvolvimento de Software Multiplataforma.
+  Desenvolvedor: Arthur Marques
+-->
+
+  <!-- CSS embutido para estilizar o formulário de cadastro -->
+  <style>
+    /* Centraliza o formulário no meio da tela */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #121212; /* Cor escura para o fundo */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo principal do formulário */
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+      padding: 20px;
+      border-radius: 20px;
+      background-color: #1a1a1a; /* Fundo escuro */
+      color: #fff;
+      border: 1px solid #333;
+      align-items: center; /* Centraliza os elementos dentro do form */
+    }
+
+    /* Título estilizado com "bolinha" animada ao lado */
+    .title {
+      font-size: 28px;
+      font-weight: 600;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      color: #00bfff;
+      width: 100%;
+      justify-content: flex-start;
+      font-family: 'Verdana', sans-serif;
+    }
+
+    /* Elementos visuais (bolinhas) decorativas do título */
+    .title::before, .title::after {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      left: 0px;
+      background-color: #00bfff;
+    }
+
+    .title::after {
+      animation: pulse 1s linear infinite; /* Animação pulsante */
+    }
+
+    /* Texto abaixo do título */
+    .message, .signin {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      text-align: center;
+    }
+
+    .message {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      color: #00bfff; /* Azul claro */
+    }
+
+    /* Links de login ou redirecionamento */
+    .signin a {
+      color: #00bfff;
+    }
+
+    .signin a:hover {
+      text-decoration: underline royalblue;
+    }
+
+    /* Inputs lado a lado (nome e sobrenome) */
+    .flex {
+      display: flex;
+      width: 100%;
+      gap: 6px;
+    }
+
+    /* Estilização de cada campo de entrada */
+    .form label {
+      position: relative;
+      width: 100%;
+    }
+
+    .form label .input {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+      padding: 20px 5px 5px 10px;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
+    }
+
+    /* Texto flutuante sobre o campo */
+    .form label .input + span {
+      color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      left: 10px;
+      top: 0px;
+      font-size: 0.9em;
+      cursor: text;
+      transition: 0.3s ease;
+    }
+
+    /* Posiciona o texto flutuante no centro se estiver vazio */
+    .form label .input:placeholder-shown + span {
+      top: 12.5px;
+      font-size: 0.9em;
+    }
+
+    /* Quando o campo está focado ou preenchido, move o texto para o topo */
+    .form label .input:focus + span,
+    .form label .input:valid + span {
+      color: #00bfff;
+      top: 0px;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+
+    .input {
+      font-size: medium;
+    }
+
+    /* Botão de envio do formulário */
+    .submit {
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      background-color: #115f94;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background-color: #00bfff96;
+    }
+
+    /* Animação da bolinha no título */
+    @keyframes pulse {
+      from {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Formulário de cadastro -->
+  <form class="form">
+    <!-- Título principal do formulário -->
+    <p class="title">Cadastrar</p>
+
+    <!-- Mensagem motivacional para atrair o cliente -->
+    <p class="message">
+      Crie sua conta e aproveite descontos e vantagens exclusivas na nossa loja!
+    </p>
+
+    <!-- Inputs para nome e sobrenome lado a lado -->
+    <div class="flex">
+      <label>
+        <input class="input" type="text" placeholder=" " required />
+        <span>Nome</span>
+      </label>
+
+      <label>
+        <input class="input" type="text" placeholder=" " required />
+        <span>Sobrenome</span>
+      </label>
+    </div>
+
+    <!-- Input de e-mail -->
+    <label>
+      <input class="input" type="email" placeholder=" " required />
+      <span>E-mail</span>
+    </label>
+
+    <!-- Input de senha -->
+    <label>
+      <input class="input" type="password" placeholder=" " required />
+      <span>Senha</span>
+    </label>
+
+    <!-- Confirmação da senha -->
+    <label>
+      <input class="input" type="password" placeholder=" " required />
+      <span>Confirmar senha</span>
+    </label>
+
+    <!-- Botão de envio -->
+    <button class="submit">Enviar</button>
+  </form>
+</body>
+</html>

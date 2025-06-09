@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Little Bunny's - Sobre Nós</title>
+
+
+ <!-- Este código foi desenvolvido para a página "Sobre Nós" do projeto "Little Bunny's", um e-commerce fictício. 
+  Para a estrutura e estilo, utilizei conceitos de design moderno e responsivo, com inspiração em tutorais de CSS para 
+  backgrounds animados com gradientes (https://css-tricks.com/animated-background-gradient/), além do uso do 
+  framework de ícones Font Awesome para adicionar elementos visuais que enriquecem a experiência do usuário.
+  
+  A tipografia e cores foram escolhidas para garantir boa legibilidade e uma estética agradável, com foco em tons de azul para transmitir confiança e tecnologia,
+  além de um efeito de transparência e blur para modernizar o visual da página (técnica conhecida como glassmorphism).
+  
+  A animação de fade-in nos textos e o bounce no ícone do coelho foram inspirados em práticas comuns de UX para criar um impacto visual suave e atrativo.
+  
+  O conteúdo textual foi criado para apresentar a loja como uma marca jovem e inovadora, realçando missão, visão e valores que são fundamentais para qualquer empresa, 
+  especialmente em comércio eletrônico, reforçando também o compromisso com o cliente.
+  
+  Por fim, o botão para retornar à página principal está estilizado para oferecer uma interação visual clara e moderna.
+  
+  Referências:
+  - Documentação do Font Awesome (https://fontawesome.com)
+  - Artigos de design e animação CSS do site CSS-Tricks (https://css-tricks.com/)
+  - Técnicas de glassmorphism no CSS (https://css-tricks.com/snippets/css/glassmorphism/)
+  
+  Todo o código foi desenvolvido por mim, integrando esses conceitos para aprender e demonstrar boas práticas de desenvolvimento web.
+ -- !>
+<-- Importação do Font Awesome para usar ícones (como o coelhinho e a seta) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+<style>
+  /* Reset básico para remover margens e paddings padrão, e ajustar box-sizing para facilitar controle */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Estilização do body:
+     - Fonte Arial para texto limpo e legível
+     - Fundo com gradiente animado para deixar visual mais moderno e dinâmico
+     - Cor do texto branca para contraste com fundo escuro
+     - Padding para espaçamento interno da página
+  */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #11a0ff, #3d779b, #0056b3, #003f7d);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite; /* Animação do gradiente mudando de posição */
+    color: #e0e9ff; /* Cor do texto levemente azul claro para melhor leitura no fundo */
+    padding: 20px;
+  }
+
+  /* Definição da animação para o background com gradiente que se move suavemente */
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  /* Container centralizado para organizar o conteúdo da página */
+  .container {
+    max-width: 900px;
+    margin: 40px auto; /* Centraliza horizontalmente e com espaçamento superior */
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para destaque */
+    border-radius: 15px; /* Bordas arredondadas para visual mais suave */
+    padding: 30px 40px; /* Espaçamento interno */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Sombra para destaque */
+    backdrop-filter: blur(8px); /* Desfoque do fundo por trás do container (efeito vidro fosco) */
+    -webkit-backdrop-filter: blur(8px); /* Compatibilidade com Safari */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Borda sutil */
+  }
+
+  /* Elementos de texto começam invisíveis para animação de fade-in */
+  h1, h2, p, ul {
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Animação que deixa o elemento visível */
+  }
+
+  /* Estilização do título principal */
+  h1 {
+    color: #cce6ff; /* Azul claro para destacar */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.8em; /* Tamanho grande para destaque */
+    animation-delay: 0.3s; /* Delay para animação começar depois */
+  }
+
+  /* Ícone do coelhinho com animação de "bounce" para ficar animado */
+  h1 i {
+    margin-left: 10px;
+    color: #e0f7ff;
+    animation: bounce 2s infinite; /* Movimento para cima e para baixo infinito */
+  }
+
+  /* Keyframes para o efeito bounce */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Estilo dos títulos das seções internas */
+  h2 {
+    color: #b3d1ff; /* Azul claro para títulos */
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #80bfff; /* Linha azul para separar seções */
+    padding-bottom: 5px;
+    font-size: 1.8em;
+    animation-delay: 0.6s;
+  }
+
+  /* Parágrafos */
+  p {
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    animation-delay: 0.9s;
+  }
+
+  /* Listas */
+  ul {
+    list-style-type: disc; /* Bolinhas padrão */
+    padding-left: 20px; /* Recuo */
+    animation-delay: 1.2s;
+  }
+
+  ul li {
+    margin-bottom: 10px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para hover */
+  }
+
+  /* Negrito dos valores com azul mais escuro */
+  ul li strong {
+    color: #7fb0e0;
+  }
+
+  /* Efeito hover nos itens da lista para destacar */
+  ul li:hover {
+    color: #d0ebff; /* Azul claro */
+    transform: scale(1.05); /* Leve aumento */
+    cursor: pointer;
+  }
+
+  /* Rodapé */
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #a0cfff;
+    animation-delay: 1.5s;
+  }
+
+  /* Animação para fade-in dos elementos */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Botão para voltar à página principal */
+  .btn-home {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    color: #007bff; /* Azul forte para o texto */
+    background-color: #e0f7ff; /* Fundo azul claro */
+    border-radius: 30px; /* Bordas arredondadas */
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3); /* Sombra para destaque */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  }
+  .btn-home:hover {
+    background-color: #007bff; /* Fundo azul forte no hover */
+    color: #fff; /* Texto branco no hover */
+    transform: scale(1.05); /* Aumento no hover */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Título principal com ícone animado -->
+  <h1>Sobre Nós <i class="fas fa-bunny"></i></h1>
+  
+  <!-- Parágrafo de introdução atualizado -->
+  <p>Bem-vindo à <strong>Little Bunny's</strong>, a sua nova loja online que está revolucionando a forma de comprar com estilo, qualidade e inovação. Fundada em 2025, nossa missão é transformar cada compra em uma experiência memorável, unindo tecnologia e atendimento personalizado para clientes exigentes e antenados.</p>
+  
+  <!-- Seção missão -->
+  <h2>Nossa Missão</h2>
+  <p>Oferecer produtos de alta qualidade com atendimento dedicado, sempre focando na satisfação e no bem-estar dos nossos clientes.</p>
+  
+  <!-- Seção visão -->
+  <h2>Nossa Visão</h2>
+  <p>Ser referência no comércio eletrônico, ampliando nosso alcance e conquistando a confiança e preferência dos consumidores em todo o Brasil.</p>
+  
+  <!-- Seção valores com lista -->
+  <h2>Nossos Valores</h2>
+  <ul>
+    <li><strong>Qualidade:</strong> Produtos selecionados com rigor para garantir a melhor experiência.</li>
+    <li><strong>Transparência:</strong> Comunicação clara e honesta em todos os processos.</li>
+    <li><strong>Inovação:</strong> Busca constante por novidades e melhorias.</li>
+    <li><strong>Compromisso:</strong> Atendimento eficiente e suporte dedicado para você.</li>
+  </ul>
+  
+  <!-- Agradecimento final -->
+  <p>Agradecemos por fazer parte da família Little Bunny's. Estamos sempre aqui para ajudar você a encontrar o que precisa com o melhor custo-benefício.</p>
+
+  <!-- Botão para voltar à página principal -->
+  <a href="site.html" class="btn-home"><i class="fas fa-arrow-left"></i> Voltar para a Home</a>
+  
+  <!-- Rodapé -->
+  <footer>
+    &copy; 2025 Little Bunny's. Todos os direitos reservados.
+  </footer>
+</div>

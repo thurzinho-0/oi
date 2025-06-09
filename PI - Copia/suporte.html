@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Little Bunny's - Suporte</title>
+
+  <!-- Ícones do Font Awesome -->
+  <!-- Usado para exibir ícones visuais na página (telefone, email, localização, redes sociais, etc) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* Reset básico e definição de fonte padrão para toda a página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #9efcff; /* cor de fundo azul claro */
+    }
+
+    /* Container principal centralizado, largura máxima e espaçamento */
+    .support-container {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* Título principal da página */
+    .heading {
+      font-size: 2em;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* Estilização para blocos com informações de contato, ícone e texto alinhados horizontalmente */
+    .contactinfo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    /* Ícones azuis à esquerda do texto */
+    .contactinfo i {
+      font-size: 20px;
+      margin-right: 10px;
+      color: #007bff;
+    }
+
+    /* Títulos dentro dos blocos de contato */
+    .contactinfo h3 {
+      margin: 0;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    /* Parágrafos simples, sem margem */
+    .contactinfo p {
+      margin: 0;
+    }
+
+    /* Formulário de contato */
+    form {
+      margin-top: 30px;
+    }
+
+    form h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    /* Inputs e textarea com largura total, espaçamento interno e borda arredondada */
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Botão de envio com cor azul e texto branco */
+    .primary {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Links das redes sociais centralizados e com espaçamento horizontal */
+    .SocialLinks {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .SocialLinks a {
+      margin: 0 10px;
+      color: #007bff;
+      font-size: 22px;
+    }
+
+    /* Chat flutuante no canto inferior direito da tela */
+    #chatBot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      font-family: Arial, sans-serif;
+      z-index: 1000; /* para ficar sempre sobre outros elementos */
+    }
+
+    /* Cabeçalho do chat, azul com texto branco e arredondado no topo */
+    .chat-header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Corpo do chat, oculto por padrão e com borda arredondada embaixo */
+    .chat-body {
+      display: none;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 10px;
+    }
+
+    /* Quando o chat está aberto, exibimos o corpo */
+    .chat-body.active {
+      display: block;
+    }
+
+    /* Área onde as mensagens aparecem, com altura fixa e barra de rolagem */
+    .messages {
+      height: 150px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    /* Estilo das mensagens do bot e do usuário */
+    .bot,
+    .user {
+      padding: 5px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    /* Mensagens do bot com fundo cinza claro */
+    .bot {
+      background-color: #f1f1f1;
+    }
+
+    /* Mensagens do usuário com fundo verde claro e alinhamento à direita */
+    .user {
+      background-color: #d1e7dd;
+      text-align: right;
+    }
+
+    /* Caixa de texto para digitar a mensagem do usuário */
+    #userInput {
+      width: calc(100% - 60px); /* espaço para o botão enviar */
+      padding: 5px;
+    }
+
+    /* Botão enviar dentro do chat */
+    .chat-body button {
+      width: 50px;
+      padding: 5px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Container principal da página de suporte -->
+  <div class="support-container">
+    <h1 class="heading">Central de Suporte 📡</h1>
+
+    <!-- Informações de contato: telefone -->
+    <div class="contactinfo">
+      <i class="fa-solid fa-phone"></i>
+      <h3>Telefone</h3>
+      <p>(19) 98612-4243</p>
+    </div>
+
+    <!-- Informações de contato: localização -->
+    <div class="contactinfo">
+      <i class="fa-solid fa-location-dot"></i>
+      <h3>Localização</h3>
+      <p>Araras SP</p>
+    </div>
+
+    <!-- Informações de contato: email -->
+    <div class="contactinfo">
+      <i class="fa-regular fa-envelope"></i>
+      <h3>Email</h3>
+      <p>littlebunnysuporte@gmail.com</p>
+    </div>
+
+    <!-- Informações de contato: Instagram -->
+    <div class="contactinfo">
+      <i class="fa-brands fa-instagram"></i>
+      <h3>Instagram</h3>
+      <p><a href="https://www.instagram.com/lit.tlebunnys/" target="_blank">https://www.instagram.com/lit.tlebunnys/</a></p>
+    </div>
+
+    <!-- Formulário simples que envia email via mailto -->
+    <!-- ATENÇÃO: 'mailto' abre o cliente de email do usuário, não envia direto pelo site -->
+    <form action="mailto:arthurdearaujomarques@gmail.com" method="post" enctype="text/plain">
+      <h2>Envie uma mensagem</h2>
+      <input type="text" placeholder="Nome" name="nome" required />
+      <input type="email" placeholder="Email" name="email" required />
+      <textarea rows="6" placeholder="Digite sua mensagem aqui..." name="mensagem" required></textarea>
+      <button class="primary" type="submit">Enviar</button>
+    </form>
+
+<!-- 
+    Chat de Ajuda simples implementado com HTML, CSS e JavaScript puro.
+    Foi inspirado em exemplos disponíveis em tutoriais e vídeos no YouTube,
+    especialmente de canais que ensinam front-end para iniciantes.
+    Adaptei o código com base no conteúdo do canal "Online Tutorials" e 
+    outras referências simples de chatbots básicos sem backend.
+    Como ainda estou aprendendo, a lógica é bem básica e serve apenas como 
+    simulação de um atendimento automático.
+-->
+
+    <!-- Chat de ajuda flutuante -->
+    <div id="chatBot">
+      <div class="chat-header" onclick="toggleChat()">
+        <span>Ajuda</span>
+        <i class="fa-solid fa-comments"></i>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="messages" id="chatMessages">
+          <div class="bot">Olá! Como posso te ajudar?</div>
+        </div>
+        <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeypress="handleKey(event)" />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </div>
+
+  <!-- Scripts para funcionalidade do chat -->
+  <script>
+    // Alterna a exibição do chat (abre/fecha)
+    function toggleChat() {
+      document.getElementById("chatBody").classList.toggle("active");
+    }
+
+    // Envia mensagem digitada pelo usuário para o chat
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (message === "") return; // não envia mensagem vazia
+
+      const chat = document.getElementById("chatMessages");
+
+      // Cria a mensagem do usuário e adiciona ao chat
+      const userMsg = document.createElement("div");
+      userMsg.className = "user";
+      userMsg.textContent = message;
+      chat.appendChild(userMsg);
+
+      // Cria a resposta automática do bot e adiciona ao chat
+      const botMsg = document.createElement("div");
+      botMsg.className = "bot";
+      botMsg.textContent = "Recebi sua mensagem! Vou responder em breve.";
+      chat.appendChild(botMsg);
+
+      // Limpa o input após enviar
+      input.value = "";
+
+      // Mantém o scroll do chat no fim para mostrar última mensagem
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Permite enviar mensagem ao pressionar Enter
+    function handleKey(e) {
+      if (e.key === "Enter") sendMessage();
+    }
+  </script>
+</body>
+</html>

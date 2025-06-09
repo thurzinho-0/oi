@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Bunny's - Loja Virtual</title>
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Boxicons (ícones) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Remixicon (ícones) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+
+    <!-- Swiper (para sliders/carrosséis) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <!-- ===== Cabeçalho e Navegação ===== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <!-- Logo -->
+            <a href="index.html" class="nav-logo">
+                <i class='bx bxs-shopping-bags nav-logo-icon'></i> Little Bunny's
+            </a>
+
+            <!-- Menu de navegação -->
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link active-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Loja</a></li>
+                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre nós</a></li>
+                    <li class="nav-item"><a href="suporte.html" class="nav-link">Suporte 🎧</a></li>
+                </ul>
+                <!-- Botão para fechar menu (mobile) -->
+                <div class="nav-close" id="nav-close">
+                    <i class="bx bx-x"></i>
+                </div>
+            </div>
+
+            <!-- Ícones: login, carrinho, menu -->
+            <div class="nav-btns">
+                <a href="cadastro.html" class="login-toggle"><i class='bx bx-user'></i></a>
+                <div class="nav-shop" id="cart-shop"><i class='bx bx-shopping-bag'></i></div>
+                <div class="nav-toggle" id="nav-toggle"><i class='bx bx-grid-alt'></i></div>
+            </div>
+        </nav>
+    </header>
+
+   <!-- ===== Carrinho (pop-up) ===== -->
+<div class="cart" id="cart">
+    <i class='bx bx-x cart-close' id="cart-close"></i>
+    <h2 class="cart-title-center">Meu Carrinho</h2>
+
+    <div class="cart-container">
+        <!-- Item do carrinho -->
+        <article class="cart-card">
+            <div class="cart-box">
+                <img src="boneco teletubies - Copia.jpeg" alt="Produto" class="discount-img" width="300" height="300">
+            </div>
+            <div class="cart-details">
+                <h3 class="cart-title">Bonecos Teletubbies</h3>
+                <span class="cart-price" data-price="99,99">R$99,99</span>
+
+                <div class="cart-amount">
+                    <div class="cart-amount-content">
+                        <input type="number" class="cart-amount-number" value="1" min="1">
+                    </div>
+                    <i class='bx bx-trash-alt cart-amount-trash'></i>
+                </div>
+            </div>
+        </article>
+
+        <!-- Você pode adicionar mais produtos duplicando o <article> -->
+    </div>
+
+    <!-- Preços totais -->
+    <div class="cart-prices">
+        <span class="cart-pirces-item">1 item</span>
+        <span class="cart-pirces-item">R$99,00</span>
+    </div>
+
+    <!-- Botão Finalizar Compra -->
+    <div class="cart-footer">
+        <button class="finalize-btn" onclick="window.location.href='Finalizar.html'">Finalizar Compra</button>
+    </div>
+</div>
+
+<!-- Interatividade baseada em tutoriais de carrinho de compras com JavaScript puro do canal Web Dev Simplified e adaptações feitas por Arthur para o projeto Little Bunny's -->
+ 
+<!-- ===== Script para atualizar valores do carrinho ===== -->
+<script>
+function atualizarTotal() {
+    const cartCards = document.querySelectorAll('.cart-card');
+    let total = 0;
+    let totalItens = 0;
+
+    cartCards.forEach(card => {
+        const preco = parseFloat(card.querySelector('.cart-price').dataset.price);
+        const quantidade = parseInt(card.querySelector('.cart-amount-number').value);
+        total += preco * quantidade;
+        totalItens += quantidade;
+    });
+
+    document.querySelector('.cart-prices').innerHTML = `
+        <span class="cart-pirces-item">${totalItens} item${totalItens > 1 ? 's' : ''}</span>
+        <span class="cart-pirces-item">R$${total.toFixed(2)}</span>
+    `;
+}
+
+// Atualiza o valor ao mudar a quantidade
+document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('cart-amount-number')) {
+        atualizarTotal();
+    }
+});
+
+// Atualiza ao carregar a página
+window.addEventListener('DOMContentLoaded', atualizarTotal);
+</script>
+
+    <!-- ===== Login (pop-up) ===== -->
+    <div class="login" id="login">
+        <i class='bx bx-x login-close' id="login-close"></i>
+        <h2 class="login-title-center">Entrar</h2>
+        <form action="#" class="login-form grid">
+            <div class="login-content">
+                <label class="login-label">Email</label>
+                <input type="email" class="login-input">
+            </div>
+            <div class="login-content">
+                <label class="login-label">Senha</label>
+                <input type="password" class="login-input">
+            </div>
+            <div>
+                <a href="#" class="button">Entrar</a>
+            </div>
+            <div>
+                <p class="signup">Ainda não tem conta? <a href="cas">Cadastre-se</a></p>
+            </div>
+        </form>
+    </div>
+<!-- 
+    Slider (Destaques) - Baseado no exemplo de Home Slider do site oficial do Swiper:
+    https://swiperjs.com/demos#autoplay
+
+    Adaptado por Arthur para exibir o Polvo de Crochê em destaque.
+
+    <!- ===== Slider (destaques) ===== -->
+   <section class="home container">
+        <div class="swiper home-swiper">
+            <div class="swiper-wrapper">
+                <section class="swiper-slide">
+                    <div class="home-content grid">
+                        <div class="home-group">
+                            <img src="povo.jpg" alt="Polvo de Crochê" class="home-img">
+                            </div>
+                        <div class="home-group" style="position: relative;">
+                            <div class="badge">LANÇAMENTO</div> <!-- ✅ Selo visual adicionado -->
+                            <h1 class="home-title">CONQUISTE CORAÇÕES<br>COM FOFURA</h1>
+                            <p class="home-description">Polvo de Crochê</p>
+                             <p class="home-description">Nosso novo polvo de crochê é a escolha perfeita para presentear com carinho. Feito com muito amor, ideal para todas as idades.</p>
+                            <div class="home-buttons">
+                                <a href="#" class="button">Comprar</a>
+                                <div class="new-prices"></div>
+                                <span class="new-price">R$29,99</span>
+                            <span class="new-discount">R$39,99</span>
+                                <a href="#" class="button-link">Detalhes <i class="bx bx-right-arrow-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <section class="discount section">
+            <div class="discount-container container grid">
+               <img src="vó dois.png" alt="" class="discount-img" width="300" height="300">
+
+                <div class="discount-data">
+                    <h2 class="discount-title">🧶 Promoção Fofa! <br> Ganhe 15% OFF nas peças artesanais</h2>
+                    <a href="#" class="button">Cupom: BUNNY10</a>
+                </div>
+            </div>
+        </section>
+        
+<!-- 
+  ========================================
+  Seção de Novidades - Carrossel de Produtos
+  Inspirado no exemplo oficial do Swiper.js:
+  https://swiperjs.com/demos
+  Personalizado para o projeto "Little Bunny's"
+  por Arthur Marques
+  ========================================
+-->
+
+<!-- ===== Seção de novidades ===== -->
+<section class="new section">
+  <h2 class="section-title">Nossos Achadinhos</h2>
+
+  <div class="new-container container">
+    <div class="swiper new-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Produto 1 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="imagem burro.jpg" alt="burro boeco" class="new-img">
+          <h3 class="new-title">Boneco Burro </h3>
+          <span class="new-subtitle">Feito a mão</span>
+
+          <div class="new-prices">
+            <span class="new-price">R$39,99</span>
+            <span class="new-discount">R$59,99</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="imagem bolsa vermelha .jpg"bolsa red" class="new-img">
+          <h3 class="new-title">Bolsa Vermelha Crochê</h3>
+          <span class="new-subtitle">Acessório</span>
+
+          <div class="new-prices">
+            <span class="new-price">R$79,99</span>
+            <span class="new-discount">R$89,99</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="imagem bolsa verde.jpg" alt="Bolsa verde" class="new-img">
+          <h3 class="new-title">Bolsa Verde Crochê</h3>
+          <span class="new-subtitle">Feito a mão</span>
+
+          <div class="new-prices">
+            <span class="new-price">R$29,99</span>
+            <span class="new-discount">R$39,99</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="bolsa azulbb.webp" alt="Bolsa de lã" class="new-img">
+          <h3 class="new-title">Bolsa Azul Crochê</h3>
+          <span class="new-subtitle">Feito a mão
+          </span>
+
+          <div class="new-prices">
+            <span class="new-price">R$24,99</span>
+            <span class="new-discount">R$44,99</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="boneco teletubies - Copia.jpeg" alt="Boneco Teletubbies" class="new-img">
+          <h3 class="new-title">Bonecos Teletubbies em amigurumi</h3>
+          <span class="new-subtitle">Acessório</span>
+
+          <div class="new-prices">
+            <span class="new-price">R$99,99</span>
+            <span class="new-discount">R$120,00</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="new-content swiper-slide">
+          <div class="new-tag">Novo</div>
+          <img src="Star Wars.jpeg" alt="Boneco" class="new-img">
+          <h3 class="new-title">Bonecos Amigurumi Star Wars</h3>
+          <span class="new-subtitle">Acessório</span>
+
+          <div class="new-prices">
+            <span class="new-price">R$89,99</span>
+            <span class="new-discount">R$100,0</span>
+          </div>
+
+          <a href="details.html" class="button new-button"><i class="bx bx-cart-alt new-icon"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ===== Rodapé ===== -->
+    <footer class="footer section">
+        <div class="footer-container container grid">
+            <div class="footer-content">
+                <a href="#" class="footer-logo"><i class="bx bxs-shopping-bag"> Little Bunny's</i></a>
+                <p class="footer-description">Promoções incríveis diretamente para sua casa</p>
+                <ul class="footer-social">
+                    <a href="https://www.instagram.com/lit.tlebunnys/" class="footer-social-link"><i class="ri-instagram-line"></i></a>
+                    <a href="https://wa.me/5519986124243" class="footer-social-link"><i class="ri-whatsapp-line"></i></a>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3 class="footer-title">Sobre</h3>
+                <ul class="footer-links">
+                    <li><a href="sobre.html" class="footer-link">Sobre nós</a></li>
+                    <li><a href="suporte.html" class="footer-link">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+               <h3 class="footer-title">Serviços</h3>
+<ul class="footer-links">
+    <li><a href="#" class="footer-link">Catálogo de Produtos</a></li>
+    <li><a href="#" class="footer-link">Ofertas da Semana</a></li>
+    <li><a href="suporte.html" class="footer-link">Fale Conosco</a></li>
+</ul>
+            </div>
+            <div class="footer-content">
+                <h3 class="footer-title">Empresa</h3>
+                <ul class="footer-links">
+                    <li><a href="cadastro.html" class="footer-link">Cadastre-se</a></li>
+                    <li><a href="https://wa.me/5519986124243" class="footer-link">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <span class="footer-copy">&#169; 2025 Little Bunny's. Todos os direitos reservados</span>
+    </footer>
+
+    <!-- Botão para voltar ao topo -->
+    <a href="#" class="scrollUp" id="scroll-up"><i class="bx bx-up-arrow-alt"></i></a>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- JS principal -->
+    <script src="main.js"></script>
+</body>
+</html>
